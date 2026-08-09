@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jaffna City Hotel - Wi-Fi Access</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- LOGO -->
+            <div style="text-align:center; margin-bottom:20px;">
+                <img
+                    src="Logo.jpeg"
+                    alt="Jaffna City Hotel"
+                    style="
+                        max-width:100%;
+                        max-height:100px;
+                        border-radius:8px;
+                    "
+                >
+            </div>
+
+
+            <!-- WIFI ICON -->
+            <div class="wifi-icon"></div>
+
+
+            <!-- HOTEL NAME -->
+            <h1>JAFFNA CITY HOTEL</h1>
+
+            <p class="subtitle">
+                Register to access our Wi-Fi
+            </p>
+
+
+            <!-- REGISTRATION FORM -->
+            <form id="wifiForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Full Name"
+                    autocomplete="name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    autocomplete="email"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Phone Number"
+                    autocomplete="tel"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    id="submitBtn"
+                >
+                    GET WI-FI ACCESS
+                </button>
+
+            </form>
+
+
+            <!-- MESSAGE -->
+            <p id="message"></p>
+
+
+            <!-- WI-FI QR SECTION -->
+            <div
+                id="originalQrSection"
+                style="
+                    margin-top:20px;
+                    text-align:center;
+                    display:none;
+                "
+            >
+
+                <p
+                    style="
+                        margin-bottom:12px;
+                        color:#666;
+                        font-size:14px;
+                    "
+                >
+                    Wi-Fi Access
+                </p>
+
+
+                <!-- ORIGINAL WIFI QR -->
+                <img
+                    id="qr-img"
+                    src="QR.jpeg"
+                    alt="Jaffna City Hotel Wi-Fi QR"
+                    style="
+                        width:100%;
+                        max-width:280px;
+                        border-radius:12px;
+                        border:1px solid #ddd;
+                    "
+                >
+
+
+                <!-- CONNECT AND COPY BUTTONS -->
+                <div style="display:flex; gap:8px; margin-top:12px;">
+
+                    <button
+                        id="connectBtn"
+                        type="button"
+                        style="
+                            flex:1;
+                            padding:12px;
+                            background:#111;
+                            color:#fff;
+                            border:none;
+                            border-radius:8px;
+                            cursor:pointer;
+                            font-weight:bold;
+                        "
+                    >
+                        Connect
+                    </button>
+
+                    <button
+                        id="copyBtn"
+                        type="button"
+                        style="
+                            flex:1;
+                            padding:12px;
+                            background:#666;
+                            color:#fff;
+                            border:none;
+                            border-radius:8px;
+                            cursor:pointer;
+                            font-weight:bold;
+                        "
+                    >
+                        Copy QR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
