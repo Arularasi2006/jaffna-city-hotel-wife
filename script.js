@@ -234,27 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --------------------------------
-    // CONNECT BUTTON
-    // --------------------------------
-
-    if (connectBtn) {
-
-        connectBtn.addEventListener('click', () => {
-
-            alert(
-                'To connect:\n\n' +
-                '1. Open your phone Settings\n' +
-                '2. Go to Wi-Fi\n' +
-                '3. Select "JAFFNA CITY HOTEL"\n' +
-                '4. Enter password: cityhotel'
-            );
-
-        });
-
-    }
-
-
-    // --------------------------------
     // QR BUTTON
     // --------------------------------
 
