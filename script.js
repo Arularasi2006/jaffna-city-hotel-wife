@@ -255,6 +255,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --------------------------------
+    // QR BUTTON
+    // --------------------------------
+
+    const qrBtn = document.getElementById('qrBtn');
+
+    if (qrBtn) {
+
+        qrBtn.addEventListener('click', () => {
+
+            alert(
+                'Connecting via QR Code:\n\n' +
+                '1. Open your device camera\n' +
+                '2. Point at the QR code above\n' +
+                '3. Tap the notification that appears\n' +
+                '4. Confirm WiFi connection'
+            );
+
+        });
+
+    }
+
+
+    // --------------------------------
     // COPY QR BUTTON
     // --------------------------------
 
