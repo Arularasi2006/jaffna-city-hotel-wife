@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const parsed = parseWifiString(WIFI_STRING);
 
             if (wifiDetails) {
-                wifiDetails.textContent =
-                    `🔐 Wi-Fi: ${parsed.wi-fi || 'JAFFNA CITY HOTEL'} • Password: ${parsed.password || 'cityhotel'}`;
+                wifiDetails.innerHTML =
+                    `🔐 Wi-Fi: ${parsed.ssid || 'JAFFNA CITY HOTEL'}<br>• Password: ${parsed.password || 'cityhotel'}`;
             }
 
             /*
