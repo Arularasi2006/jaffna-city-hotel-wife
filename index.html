@@ -1,1 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jaffna City Hotel - Wi-Fi Access</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f97316, #111827);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 22px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+            color: #111;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #f97316;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .wifi-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .wifi-name {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
+            color: #c2410c;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #f97316;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #f97316;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #ea580c;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        .registration {
+            display: block;
+        }
+
+        .success {
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .connected {
+            color: #16a34a;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .qr-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-image {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .button-group a,
+        .button-group button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .button-group a:hover,
+        .button-group button:hover {
+            opacity: 0.9;
+        }
+
+        .connect-btn {
+            background: #111;
+        }
+
+        .qr-btn {
+            background: #0066cc;
+        }
+
+        .copy-btn {
+            background: #666;
+        }
+
+        .terms {
+            margin-top: 18px;
+            font-size: 11px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #999;
+        }
+
+        #wifiDetails {
+            margin: 12px 0;
+            color: #c2410c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- Registration Page -->
+            <div id="registration" class="registration">
+
+                <div class="logo">
+                    <img src="Logo.jpeg" alt="Jaffna City Hotel Logo" style="width:100%; height:100%; border-radius:100%; object-fit:cover;">
+                </div>
+
+                <div class="wifi-icon"></div>
+
+                <h1>JAFFNA CITY HOTEL</h1>
+
+                <p class="subtitle">
+                    Welcome! Connect to our complimentary Wi-Fi.
+                </p>
+
+                <div class="wifi-name">
+                    📶 Wi-Fi: JAFFNA CITY HOTEL
+                </div>
+
+                <form id="wifiForm">
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Full Name"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Mobile Number"
+                        autocomplete="tel"
+                        required
+                    >
+
+                    <button type="submit" id="submitBtn">
+                        CONNECT TO WI-FI
+                    </button>
+
+                </form>
+
+                <p id="message" style="display:none;"></p>
+
+                <p class="terms">
+                    By continuing, you agree to use the hotel Wi-Fi
+                    responsibly and accept our terms of use.
+                </p>
+
+            </div>
+
+            <!-- Success Page -->
+            <div id="success" class="success">
+
+                <div class="success-icon">
+                    ✅
+                </div>
+
+                <div class="connected">
+                    Connected Successfully
+                </div>
+
+                <p>
+                    Welcome to Jaffna City Hotel!
+                </p>
+
+                <br>
+
+                <p style="font-size:14px;color:#666;">
+                    You may now use the internet.
+                </p>
+
+                <!-- QR SECTION -->
+                <div class="qr-section">
+
+                    <p style="margin-bottom:12px;color:#666;font-size:14px;">
+                        Wi-Fi Access
+                    </p>
+
+                    <img
+                        id="qr-img"
+                        src="QR.jpeg"
+                        alt="Jaffna City Hotel Wi-Fi QR"
+                        class="qr-image"
+                    >
+
+                    <p id="wifiDetails"></p>
+
+                    <!-- CONNECT, QR AND COPY BUTTONS -->
+                    <div class="button-group">
+
+                        <a
+                            href="WIFI:S:JAFFNA CITY HOTEL;T:WPA;P:cityhotel;;"
+                            id="connectBtn"
+                            class="connect-btn"
+                        >
+                            Connect
+                        </a>
+
+                        <button
+                            id="qrBtn"
+                            type="button"
+                            class="qr-btn"
+                        >
+                            QR
+                        </button>
+
+                        <button
+                            id="copyBtn"
+                            type="button"
+                            class="copy-btn"
+                        >
+                            Copy QR
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="wifi-name" style="margin-top:20px;">
+                    📶 Network: JAFFNA CITY HOTEL
+                </div>
+
+            </div>
+
+            <div class="footer">
+                © 2026 Jaffna City Hotel
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -44,23 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
 
-    const originalQrSection =
-        document.getElementById('originalQrSection');
-
+    const registrationDiv = document.getElementById('registration');
+    const successDiv = document.getElementById('success');
+    const wifiDetails = document.getElementById('wifiDetails');
     const qrImg = document.getElementById('qr-img');
-    const wifiDetails = document.getElementById('wifi-details');
-    const connectBtn = document.getElementById('connectBtn');
+    const qrBtn = document.getElementById('qrBtn');
     const copyBtn = document.getElementById('copyBtn');
-
-
-    // --------------------------------
-    // INITIAL STATE
-    // --------------------------------
-
-    // QR hidden when page opens
-    if (originalQrSection) {
-        originalQrSection.style.display = 'none';
-    }
 
 
     // --------------------------------
@@ -75,16 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (name === '') {
             msg.textContent = 'Please enter your name.';
+            msg.style.display = 'block';
+            msg.style.color = '#d32f2f';
             return false;
         }
 
         if (email === '') {
             msg.textContent = 'Please enter your email.';
+            msg.style.display = 'block';
+            msg.style.color = '#d32f2f';
             return false;
         }
 
         if (phone === '') {
             msg.textContent = 'Please enter your phone number.';
+            msg.style.display = 'block';
+            msg.style.color = '#d32f2f';
             return false;
         }
 
@@ -100,39 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         event.preventDefault();
 
-
         if (!validateForm()) {
             return;
         }
 
+        msg.textContent = 'Saving your information...';
+        msg.style.display = 'block';
+        msg.style.color = '#1565c0';
 
-        msg.textContent =
-            'Saving your information...';
-
-
-        const submitButton =
-            form.querySelector('button[type="submit"]');
-
+        const submitButton = form.querySelector('button[type="submit"]');
 
         if (submitButton) {
-
             submitButton.disabled = true;
-
-            submitButton.textContent =
-                'PLEASE WAIT...';
+            submitButton.textContent = 'PLEASE WAIT...';
         }
 
-
         const data = {
-
             name: nameInput.value.trim(),
-
             email: emailInput.value.trim(),
-
             phone: phoneInput.value.trim()
-
         };
-
 
         try {
 
@@ -141,50 +123,26 @@ document.addEventListener('DOMContentLoaded', () => {
              */
 
             await fetch(ENDPOINT, {
-
                 method: 'POST',
-
                 mode: 'no-cors',
-
                 headers: {
-                    'Content-Type':
-                        'text/plain;charset=utf-8'
+                    'Content-Type': 'text/plain;charset=utf-8'
                 },
-
                 body: JSON.stringify(data)
-
             });
-
 
             /*
              * Save submitted status
              */
 
-            localStorage.setItem(
-                STORAGE_KEY_SUBMITTED,
-                'true'
-            );
-
+            localStorage.setItem(STORAGE_KEY_SUBMITTED, 'true');
 
             /*
              * Show success message
              */
 
-            msg.textContent =
-                '✓ Information saved successfully!';
-
-
-            /*
-             * Show ONLY ONE Wi-Fi QR
-             */
-
-            if (originalQrSection) {
-
-                originalQrSection.style.display =
-                    'block';
-
-            }
-
+            msg.textContent = '✓ Information saved successfully!';
+            msg.style.color = '#16a34a';
 
             /*
              * Display Wi-Fi details
@@ -193,12 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const parsed = parseWifiString(WIFI_STRING);
 
             if (wifiDetails) {
-
                 wifiDetails.textContent =
                     `🔐 SSID: ${parsed.ssid || 'JAFFNA CITY HOTEL'} • Password: ${parsed.password || 'cityhotel'}`;
-
             }
-
 
             /*
              * Clear form
@@ -206,26 +161,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             form.reset();
 
+            /*
+             * Switch to success page
+             */
+
+            setTimeout(() => {
+                registrationDiv.style.display = 'none';
+                successDiv.style.display = 'block';
+            }, 500);
 
         } catch (error) {
 
-            console.error(
-                'Submission error:',
-                error
-            );
+            console.error('Submission error:', error);
 
-            msg.textContent =
-                'Unable to save information. Please try again.';
+            msg.textContent = 'Unable to save information. Please try again.';
+            msg.style.color = '#d32f2f';
 
         } finally {
 
             if (submitButton) {
-
                 submitButton.disabled = false;
-
-                submitButton.textContent =
-                    'GET WI-FI ACCESS';
-
+                submitButton.textContent = 'CONNECT TO WI-FI';
             }
 
         }
@@ -236,8 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------
     // QR BUTTON
     // --------------------------------
-
-    const qrBtn = document.getElementById('qrBtn');
 
     if (qrBtn) {
 
@@ -266,8 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
 
-                await navigator.clipboard
-                    .writeText(WIFI_STRING);
+                await navigator.clipboard.writeText(WIFI_STRING);
 
                 alert('Wi-Fi string copied to clipboard!');
 
