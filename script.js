@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (wifiDetails) {
                 wifiDetails.textContent =
-                    `🔐 SSID: ${parsed.ssid || 'JAFFNA CITY HOTEL'} • Password: ${parsed.password || 'cityhotel'}`;
+                    `🔐 Wi-Fi: ${parsed.wi-fi || 'JAFFNA CITY HOTEL'} • Password: ${parsed.password || 'cityhotel'}`;
             }
 
             /*
